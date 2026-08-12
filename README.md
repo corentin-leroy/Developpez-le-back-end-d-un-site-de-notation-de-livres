@@ -38,9 +38,12 @@ npm install
 ### Variables d'environnement
 
 Crée un fichier `.env` à la racine du **backend**:
+
+```
 MONGODB_URI=mongodb+srv://[USER]:[PASSWORD]@[CLUSTER].mongodb.net/?appName=OC
 PORT=4000
 JWT_SECRET=ta_clé_secrète_très_longue
+```
 
 ### Lancer les serveurs
 
@@ -48,36 +51,44 @@ JWT_SECRET=ta_clé_secrète_très_longue
 ```bash
 cd backend
 npm start
-# Écoute sur http://localhost:4000
 ```
 
 **Terminal 2 - Frontend:**
 ```bash
 cd P7-Dev-Web-livres
 npm start
-# Écoute sur http://localhost:3000
 ```
 
 Ouvre `http://localhost:3000` dans ton navigateur.
 
 ## Architecture
 
+```
 backend/
 ├── models/
-│ ├── User.js # Schéma utilisateur
-│ └── Book.js # Schéma livre
+│   ├── User.js            (Schéma utilisateur)
+│   └── Book.js            (Schéma livre)
 ├── controllers/
-│ ├── authController.js # Logique signup/login
-│ └── booksController.js # Logique CRUD livres + notation
+│   ├── authController.js  (Logique signup/login)
+│   └── booksController.js (Logique CRUD livres + notation)
 ├── routes/
-│ ├── auth.js # Routes authentification
-│ └── books.js # Routes livres
+│   ├── auth.js            (Routes authentification)
+│   └── books.js           (Routes livres)
 ├── middleware/
-│ └── auth.js # Vérification JWT token
-├── images/ # Dossier stockage images
-├── app.js # Application Express
-├── .env # Variables d'environnement (à créer)
+│   └── auth.js            (Vérification JWT token)
+├── images/                (Dossier stockage images)
+├── app.js                 (Application Express)
+├── .env                   (Variables d'environnement)
 └── package.json
+```
+
+**Fichiers clés:**
+
+- **models/:** Définissent la structure des données (User, Book)
+- **controllers/:** Contiennent la logique métier (signup, createBook, rateBook, etc.)
+- **routes/:** Définissent les endpoints API (/api/auth, /api/books)
+- **middleware/:** Fonctions intermédiaires (authentification JWT)
+- **app.js:** Point d'entrée du serveur Express
 
 ## API Endpoints
 
@@ -112,13 +123,13 @@ backend/
 
 ## Fonctionnalités clés
 
-✓ **Authentification JWT** - Tokens expirables 24h
-✓ **Hachage sécurisé** - Passwords avec Bcrypt
-✓ **Upload d'images** - Avec compression automatique (WebP, 500x500)
-✓ **Notation de livres** - Un user, une note par livre
-✓ **Moyenne automatique** - Recalculée après chaque notation
-✓ **Sécurité** - Seul le créateur peut modifier/supprimer son livre
-✓ **Green Code** - Images optimisées (Sharp compression 80%)
+- **Authentification JWT** - Tokens expirables 24h
+- **Hachage sécurisé** - Passwords avec Bcrypt
+- **Upload d'images** - Avec compression automatique (WebP, 500x500)
+- **Notation de livres** - Un user, une note par livre
+- **Moyenne automatique** - Recalculée après chaque notation
+- **Sécurité** - Seul le créateur peut modifier/supprimer son livre
+- **Green Code** - Images optimisées (Sharp compression 80%)
 
 ## Sécurité
 
@@ -147,7 +158,7 @@ backend/
   imageUrl: String,
   year: Number,
   genre: String,
-  ratings: [{userId, grade}],
+  ratings: [{ userId, grade }],
   averageRating: Number
 }
 ```
@@ -161,7 +172,7 @@ npm run dev
 ```
 
 ### Tester l'API
-Utilise Postman, Thunder Client ou le frontend fourni.
+Utilise le frontend fourni par OpenClassrooms.
 
 
 
