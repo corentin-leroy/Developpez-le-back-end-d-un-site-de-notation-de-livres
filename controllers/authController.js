@@ -18,7 +18,7 @@ exports.signup = async (req, res) => {
     res.status(201).json({ message: 'Utilisateur créé avec succès' });
 
   } catch (err) {
-    if (err.code === 11000) {
+    if (err.code === 11000 || err.name === 'ValidationError') {
       return res.status(400).json({ message: 'Email déjà utilisé' });
     }
     res.status(500).json({ message: err.message });
